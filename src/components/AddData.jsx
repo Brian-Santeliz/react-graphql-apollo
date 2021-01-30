@@ -18,6 +18,7 @@ const AddData = () => {
     e.preventDefault();
     setForm({ name: "", year: "", author: "" });
     addBookMutation({ variables: { ...form } });
+    window.location.reload();
   };
   return (
     <div>
