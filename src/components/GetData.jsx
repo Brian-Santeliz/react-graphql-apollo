@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import { GET_BOOKS } from "../graphql/getData";
 import { useMutation } from "@apollo/client";
 import { DELETE_DATA } from "../graphql/deleteData";
-const GetData = () => {
+const GetData = ({ handleUpdateBook }) => {
   const { error, loading, data } = useQuery(GET_BOOKS);
   const [deleteBookMutation] = useMutation(DELETE_DATA);
   if (loading) return <p>Loading...</p>;
@@ -13,6 +13,9 @@ const GetData = () => {
       deleteBookMutation({ variables: { id } });
       window.location.reload();
     }
+  };
+  const handleUpdate = (id) => {
+    handleUpdateBook(id);
   };
   return (
     <>
@@ -30,6 +33,9 @@ const GetData = () => {
                 >
                   <button onClick={() => handleDeleteClick(data.id)}>
                     Eliminar
+                  </button>
+                  <button onClick={() => handleUpdate(data.id)}>
+                    Actualizar
                   </button>
                 </div>
                 <hr />

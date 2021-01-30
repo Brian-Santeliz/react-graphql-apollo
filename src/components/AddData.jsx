@@ -7,6 +7,7 @@ const AddData = () => {
     year: "",
     author: "",
   });
+
   const [addBookMutation] = useMutation(CREATE_BOOK);
   const handleInputChange = (e) => {
     setForm({
@@ -16,8 +17,8 @@ const AddData = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setForm({ name: "", year: "", author: "" });
     addBookMutation({ variables: { ...form } });
+    setForm({ name: "", year: "", author: "" });
     window.location.reload();
   };
   return (
