@@ -1,6 +1,11 @@
-import { GetData } from "./components";
+import { GetData, AddData } from "./components";
 function App() {
-  return <GetData />;
+  return (
+    <>
+      <GetData />
+      <AddData />
+    </>
+  );
 }
 
 export default App;
