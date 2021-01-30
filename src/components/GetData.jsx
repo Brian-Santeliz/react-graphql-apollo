@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import { GET_BOOKS } from "../graphql/getData";
 import { useMutation } from "@apollo/client";
 import { DELETE_DATA } from "../graphql/deleteData";
+import { MDBNavbar, MDBNavbarBrand } from "mdbreact";
 const GetData = ({ handleUpdateBook }) => {
   const { error, loading, data } = useQuery(GET_BOOKS);
   const [deleteBookMutation] = useMutation(DELETE_DATA);
@@ -20,8 +21,9 @@ const GetData = ({ handleUpdateBook }) => {
   return (
     <>
       <div>
-        <h1>Get Data with Apollo & Graphql</h1>
         {data &&
+          !loading &&
+          !error &&
           data.getBooks.map((data) => {
             return (
               <div key={data.id}>

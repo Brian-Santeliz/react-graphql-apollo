@@ -1,4 +1,4 @@
-import { GetData, AddData } from "./components";
+import { GetData, AddData, Navbar } from "./components";
 import { useQuery } from "@apollo/client";
 import { getBookId } from "./graphql/getIdData";
 import { useState } from "react";
@@ -17,6 +17,7 @@ function App() {
   };
   return (
     <>
+      <Navbar />
       <GetData handleUpdateBook={handleUpdateBook} />
       <AddData dataUpdate={dataUpdate} />
     </>

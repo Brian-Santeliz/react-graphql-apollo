@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { CREATE_BOOK } from "../graphql/addData";
 import { useMutation } from "@apollo/client";
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBIcon,
+  MDBInput,
+  MDBBtn,
+} from "mdbreact";
 const AddData = () => {
   const [form, setForm] = useState({
     name: "",
@@ -22,32 +30,57 @@ const AddData = () => {
     window.location.reload();
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          onChange={handleInputChange}
-          placeholder="escribe el nombre"
-          value={form.name}
-          name="name"
-        />
-        <input
-          type="text"
-          onChange={handleInputChange}
-          placeholder="escribe el año"
-          value={form.year}
-          name="year"
-        />
-        <input
-          type="text"
-          onChange={handleInputChange}
-          placeholder="escribe el autor"
-          value={form.author}
-          name="author"
-        />
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
+    <>
+      <MDBContainer>
+        <MDBRow>
+          <MDBCol md="6" className="mx-auto mt-2">
+            <form onSubmit={handleSubmit}>
+              <p className="h5 text-center mb-4">Agregar un Libro</p>
+              <div className="grey-text">
+                <MDBInput
+                  onChange={handleInputChange}
+                  value={form.name}
+                  name="name"
+                  label="Escribe el nombre"
+                  icon="book"
+                  group
+                  type="text"
+                  validate
+                  error="wrong"
+                  success="right"
+                />
+                <MDBInput
+                  onChange={handleInputChange}
+                  value={form.year}
+                  name="year"
+                  label="Escribe el año"
+                  icon="pencil-alt"
+                  group
+                  type="number"
+                  validate
+                />
+                <MDBInput
+                  name="author"
+                  value={form.author}
+                  onChange={handleInputChange}
+                  label="Escribe el autor"
+                  icon="user"
+                  group
+                  type="text"
+                  validate
+                />
+              </div>
+              <div className="text-center">
+                <MDBBtn color="cyan" className="text-white" type="submit">
+                  <MDBIcon far icon="paper-plane" className="ml-1" />
+                  Guardar
+                </MDBBtn>
+              </div>
+            </form>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+    </>
   );
 };
 
