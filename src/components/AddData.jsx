@@ -25,7 +25,8 @@ const AddData = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    addBookMutation({ variables: { ...form } });
+
+    addBookMutation({ variables: { input: { ...form } } });
     setForm({ name: "", year: "", author: "" });
     window.location.reload();
   };

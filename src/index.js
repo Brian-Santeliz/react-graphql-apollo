@@ -8,6 +8,7 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 const client = new ApolloClient({
   uri: "http://localhost:4000",
   cache: new InMemoryCache(),
+  connectToDevTools: true,
 });
 
 ReactDOM.render(
